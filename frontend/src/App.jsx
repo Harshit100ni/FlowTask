@@ -1,122 +1,120 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from 'react';
+import { useProjects } from './hooks/useProjects';
+import { useFilters } from './hooks/useFilters';
+import { useTasks } from './hooks/useTasks';
+import ProjectSidebar from './components/ProjectSidebar';
+import FilterBar from './components/FilterBar';
+import KanbanBoard from './components/KanbanBoard';
+import TaskDetailPanel from './components/TaskDetailPanel';
+import './styles/global.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { projects, deleteProject } = useProjects();
+  const { filters, setFilter, clearFilters } = useFilters();
+  const { tasks, createTask, updateTask, deleteTask, refetch: refetchTasks } = useTasks(filters);
+
+  const [selectedTaskId, setSelectedTaskId] = useState(null);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
+
+  const selectedProjectId = filters.project_id;
+
+  function handleSelectProject(id) {
+    setFilter('project_id', id);
+  }
+
+  async function handleDeleteProject(id) {
+    await deleteProject(id);
+    if (selectedProjectId === id) {
+      setFilter('project_id', null);
+    }
+  }
+
+  function handleCreated(project) {
+    setFilter('project_id', project.id);
+  }
+
+  function handleTaskClick(taskId) {
+    setSelectedTaskId(taskId);
+    setIsDetailOpen(true);
+  }
+
+  async function handleTaskDelete(taskId) {
+    await deleteTask(taskId);
+    refetchTasks();
+  }
+
+  async function handleAddTask() {
+    if (!selectedProjectId) {
+      alert('Please select a project first.');
+      return;
+    }
+    const title = window.prompt('Task title:');
+    if (!title || !title.trim()) return;
+    const task = await createTask({
+      project_id: selectedProjectId,
+      title: title.trim(),
+      priority: 'Low',
+      status: 'To Do',
+    });
+    if (task) {
+      setSelectedTaskId(task.id);
+      setIsDetailOpen(true);
+    }
+  }
+
+  function handleDetailClose() {
+    setIsDetailOpen(false);
+    setSelectedTaskId(null);
+  }
+
+  function handleUpdated() {
+    refetchTasks();
+  }
+
+  function handleDeleted() {
+    refetchTasks();
+  }
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <div className="sidebar">
+        <ProjectSidebar
+          projects={projects}
+          selectedProjectId={selectedProjectId}
+          onSelectProject={handleSelectProject}
+          onDeleteProject={handleDeleteProject}
+          onCreated={handleCreated}
+        />
+      </div>
+      <div className="main-content">
+        <FilterBar
+          filters={filters}
+          projects={projects}
+          onChange={setFilter}
+          onClear={clearFilters}
+        />
+        <KanbanBoard
+          tasks={tasks}
+          updateTask={updateTask}
+          selectedProjectId={selectedProjectId}
+          hasProjects={projects.length > 0}
+          onCreateProject={() => {}}
+          onTaskClick={handleTaskClick}
+          onTaskDelete={handleTaskDelete}
+          onAddTask={handleAddTask}
+        />
+      </div>
+      {isDetailOpen && (
+        <TaskDetailPanel
+          taskId={selectedTaskId}
+          projects={projects}
+          onClose={handleDetailClose}
+          onUpdated={handleUpdated}
+          onDeleted={handleDeleted}
+        />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

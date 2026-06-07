@@ -659,7 +659,7 @@ Deleting closes the panel and fires `onDeleted`.
 
 ---
 
-### Task 39: Frontend — App.jsx and main.jsx
+### Task 39: Frontend — App.jsx and main.jsx ✅
 
 **Files to create:**
 - `frontend/src/App.jsx`
