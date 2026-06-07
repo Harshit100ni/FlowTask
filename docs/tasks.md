@@ -522,7 +522,7 @@ Dragging the card sets the correct `taskId` in `dataTransfer`.
 
 ---
 
-### Task 31: Frontend — TaskContextMenu component
+### Task 31: Frontend — TaskContextMenu component ✅
 
 **Files to create:**
 - `frontend/src/components/TaskContextMenu.jsx`

@@ -73,3 +73,40 @@
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
+
+.task-context-menu {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.task-context-menu-item {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.task-context-menu-item:hover {
+  background-color: var(--color-bg);
+}
+
+.task-context-menu-delete {
+  color: #dc2626;
+}
+
+.task-context-menu-delete:hover {
+  background-color: #fee2e2;
+}
