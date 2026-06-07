@@ -638,7 +638,7 @@ Confirming the prompt calls `deleteTask` and then `onDeleted`; cancelling does n
 
 ---
 
-### Task 38: Frontend — TaskDetailPanel component
+### Task 38: Frontend — TaskDetailPanel component ✅
 
 **Files to create:**
 - `frontend/src/components/TaskDetailPanel.jsx`
