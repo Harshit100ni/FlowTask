@@ -10,7 +10,7 @@
 
 ---
 
-### Task 1: Backend — Project scaffold
+### Task 1: Backend — Project scaffold ✅
 
 **Files to create:**
 - `backend/` (directory)
@@ -27,7 +27,7 @@ Write `.gitignore` to exclude `flowtask.db`, `__pycache__/`, `*.pyc`, `.venv/`.
 
 ---
 
-### Task 2: Backend — database.py
+### Task 2: Backend — database.py ✅
 
 **Files to create:**
 - `backend/database.py`
@@ -43,7 +43,7 @@ Export: `engine`, `async_session`, `get_session` dependency.
 
 ---
 
-### Task 3: Backend — models.py
+### Task 3: Backend — models.py ✅
 
 **Files to create:**
 - `backend/models.py`
@@ -59,7 +59,7 @@ Add indexes: `ix_task_project_id`, `ix_task_status`, `ix_task_priority`, `ix_tas
 
 ---
 
-### Task 4: Backend — schemas.py
+### Task 4: Backend — schemas.py ✅
 
 **Files to create:**
 - `backend/schemas.py`
@@ -78,7 +78,7 @@ Define Pydantic (non-table SQLModel) classes:
 
 ---
 
-### Task 5: Backend — main.py
+### Task 5: Backend — main.py ✅
 
 **Files to create:**
 - `backend/main.py`
@@ -94,7 +94,7 @@ Include the `projects` and `tasks` routers under prefix `/api/v1` (these files a
 
 ---
 
-### Task 6: Backend — GET /projects and POST /projects
+### Task 6: Backend — GET /projects and POST /projects ✅
 
 **Files to create:**
 - `backend/routes/__init__.py` (empty)
@@ -114,7 +114,7 @@ Implement `POST /projects` → validate `ProjectCreate`, insert row, return `Pro
 
 ---
 
-### Task 7: Backend — GET, PATCH, DELETE /projects/{project_id}
+### Task 7: Backend — GET, PATCH, DELETE /projects/{project_id} ✅
 
 **Files to modify:**
 - `backend/routes/projects.py`
@@ -131,7 +131,7 @@ Implement `DELETE /projects/{project_id}` → delete row (ORM cascade deletes ch
 
 ---
 
-### Task 8: Backend — POST /tasks and GET /tasks/{task_id}
+### Task 8: Backend — POST /tasks and GET /tasks/{task_id} ✅
 
 **Files to create:**
 - `backend/routes/tasks.py`
@@ -151,7 +151,7 @@ Implement `GET /tasks/{task_id}` → return `TaskRead` or 404.
 
 ---
 
-### Task 9: Backend — GET /tasks with filter query params
+### Task 9: Backend — GET /tasks with filter query params ✅
 
 **Files to modify:**
 - `backend/routes/tasks.py`
@@ -170,7 +170,7 @@ Return `list[TaskRead]`, status 200.
 
 ---
 
-### Task 10: Backend — PATCH /tasks/{task_id} and DELETE /tasks/{task_id}
+### Task 10: Backend — PATCH /tasks/{task_id} and DELETE /tasks/{task_id} ✅
 
 **Files to modify:**
 - `backend/routes/tasks.py`
@@ -189,7 +189,7 @@ Implement `DELETE /tasks/{task_id}` → delete task or 404; return 204.
 
 ---
 
-### Task 11: Frontend — Vite project scaffold
+### Task 11: Frontend — Vite project scaffold ✅
 
 **Files to create:**
 - `frontend/package.json`
@@ -207,7 +207,7 @@ Browser at `http://localhost:5173` returns a 200 response.
 
 ---
 
-### Task 12: Frontend — Axios client
+### Task 12: Frontend — Axios client ✅
 
 **Files to create:**
 - `frontend/src/api/client.js`
@@ -221,7 +221,7 @@ Export the instance as the default export.
 
 ---
 
-### Task 13: Frontend — enums constants
+### Task 13: Frontend — enums constants ✅
 
 **Files to create:**
 - `frontend/src/constants/enums.js`
@@ -234,7 +234,7 @@ Export `PRIORITIES = ['Low', 'Medium', 'High']` and `STATUSES = ['To Do', 'In Pr
 
 ---
 
-### Task 14: Frontend — global CSS
+### Task 14: Frontend — global CSS ✅
 
 **Files to create:**
 - `frontend/src/styles/global.css`
@@ -249,7 +249,7 @@ Importing `global.css` in `main.jsx` applies the reset and CSS variables; the tw
 
 ---
 
-### Task 15: Frontend — useProjects hook
+### Task 15: Frontend — useProjects hook ✅
 
 **Files to create:**
 - `frontend/src/hooks/useProjects.js`
@@ -267,7 +267,7 @@ Calling the hook in a test component populates `projects` from the live backend;
 
 ---
 
-### Task 16: Frontend — useTasks hook
+### Task 16: Frontend — useTasks hook ✅
 
 **Files to create:**
 - `frontend/src/hooks/useTasks.js`
@@ -283,7 +283,7 @@ Changing the `filters` argument triggers a new API call; `updateTask(id, { statu
 
 ---
 
-### Task 17: Frontend — useTask hook
+### Task 17: Frontend — useTask hook ✅
 
 **Files to create:**
 - `frontend/src/hooks/useTask.js`
@@ -301,7 +301,7 @@ Passing a valid `taskId` populates `task` with the full task object; passing `nu
 
 ---
 
-### Task 18: Frontend — useFilters hook
+### Task 18: Frontend — useFilters hook ✅
 
 **Files to create:**
 - `frontend/src/hooks/useFilters.js`
@@ -318,7 +318,7 @@ Calling `setFilter("priority", "High")` updates only the `priority` key; `clearF
 
 ---
 
-### Task 19: Frontend — ProjectForm component
+### Task 19: Frontend — ProjectForm component ✅
 
 **Files to create:**
 - `frontend/src/components/ProjectForm.jsx`
@@ -338,7 +338,7 @@ Submitting with a valid name calls `onSubmit` with the correct payload.
 
 ---
 
-### Task 20: Frontend — NewProjectModal component
+### Task 20: Frontend — NewProjectModal component ✅
 
 **Files to create:**
 - `frontend/src/components/NewProjectModal.jsx`
@@ -355,7 +355,7 @@ When `isOpen` is true, filling in a name and submitting closes the modal and cal
 
 ---
 
-### Task 21: Frontend — ProjectItem component
+### Task 21: Frontend — ProjectItem component ✅
 
 **Files to create:**
 - `frontend/src/components/ProjectItem.jsx`
@@ -372,7 +372,7 @@ Clicking the delete button and confirming calls `onDelete`; cancelling does not.
 
 ---
 
-### Task 22: Frontend — ProjectList component
+### Task 22: Frontend — ProjectList component ✅
 
 **Files to create:**
 - `frontend/src/components/ProjectList.jsx`
@@ -387,7 +387,7 @@ A non-empty array renders one `ProjectItem` per project, each receiving the corr
 
 ---
 
-### Task 23: Frontend — ProjectSidebar component
+### Task 23: Frontend — ProjectSidebar component ✅
 
 **Files to create:**
 - `frontend/src/components/ProjectSidebar.jsx`
@@ -405,7 +405,7 @@ Clicking **New Project** opens the modal; creating a project closes it and the n
 
 ---
 
-### Task 24: Frontend — SearchInput component
+### Task 24: Frontend — SearchInput component ✅
 
 **Files to create:**
 - `frontend/src/components/SearchInput.jsx`
@@ -420,7 +420,7 @@ Typing in the input calls `onChange` with the current string value on each keyst
 
 ---
 
-### Task 25: Frontend — ProjectFilter component
+### Task 25: Frontend — ProjectFilter component ✅
 
 **Files to create:**
 - `frontend/src/components/ProjectFilter.jsx`
@@ -437,7 +437,7 @@ Selecting "All Projects" calls `onChange(null)`.
 
 ---
 
-### Task 26: Frontend — PriorityFilter component
+### Task 26: Frontend — PriorityFilter component ✅
 
 **Files to create:**
 - `frontend/src/components/PriorityFilter.jsx`
@@ -451,7 +451,7 @@ Selecting "High" calls `onChange("High")`; selecting the default option calls `o
 
 ---
 
-### Task 27: Frontend — StatusFilter component
+### Task 27: Frontend — StatusFilter component ✅
 
 **Files to create:**
 - `frontend/src/components/StatusFilter.jsx`
@@ -465,7 +465,7 @@ Selecting "In Progress" calls `onChange("In Progress")`; selecting the default c
 
 ---
 
-### Task 28: Frontend — ClearFiltersButton component
+### Task 28: Frontend — ClearFiltersButton component ✅
 
 **Files to create:**
 - `frontend/src/components/ClearFiltersButton.jsx`
@@ -481,7 +481,7 @@ When `disabled` is true, clicking does nothing and the button appears visually d
 
 ---
 
-### Task 29: Frontend — FilterBar component
+### Task 29: Frontend — FilterBar component ✅
 
 **Files to create:**
 - `frontend/src/components/FilterBar.jsx`
@@ -501,7 +501,7 @@ Changing any control fires the parent's `onChange` with the correct key and valu
 
 ---
 
-### Task 30: Frontend — TaskCard component
+### Task 30: Frontend — TaskCard component ✅
 
 **Files to create:**
 - `frontend/src/components/TaskCard.jsx`
