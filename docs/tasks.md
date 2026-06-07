@@ -586,7 +586,7 @@ An empty column shows `EmptyColumnState`; a column with tasks shows `TaskCard` i
 
 ---
 
-### Task 35: Frontend — KanbanBoard component
+### Task 35: Frontend — KanbanBoard component ✅
 
 **Files to create:**
 - `frontend/src/components/KanbanBoard.jsx`
