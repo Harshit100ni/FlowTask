@@ -623,7 +623,7 @@ Character counters update on each keystroke.
 
 ---
 
-### Task 37: Frontend — DeleteTaskButton component
+### Task 37: Frontend — DeleteTaskButton component ✅
 
 **Files to create:**
 - `frontend/src/components/DeleteTaskButton.jsx`
