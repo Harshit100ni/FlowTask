@@ -1,0 +1,107 @@
+.project-sidebar {
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.sidebar-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.sidebar-new-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: #6366f1;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s;
+}
+
+.sidebar-new-btn:hover {
+  background-color: #4f46e5;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.project-list-empty {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  padding: var(--spacing-sm) 0;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  gap: var(--spacing-xs);
+}
+
+.project-item:hover {
+  background-color: var(--color-bg);
+}
+
+.project-item-selected {
+  background-color: #ede9fe;
+  color: #4f46e5;
+}
+
+.project-item-selected:hover {
+  background-color: #ddd6fe;
+}
+
+.project-item-name {
+  font-size: 0.9375rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.project-item-delete {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.project-item:hover .project-item-delete {
+  opacity: 1;
+}
+
+.project-item-delete:hover {
+  color: var(--color-priority-high);
+}
