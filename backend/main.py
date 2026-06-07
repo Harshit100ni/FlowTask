@@ -9,10 +9,15 @@ from database import engine
 
 try:
     from routes.projects import router as projects_router
-    from routes.tasks import router as tasks_router
-    _routers_available = True
+    _projects_available = True
 except ImportError:
-    _routers_available = False
+    _projects_available = False
+
+try:
+    from routes.tasks import router as tasks_router
+    _tasks_available = True
+except ImportError:
+    _tasks_available = False
 
 
 @asynccontextmanager
@@ -31,7 +36,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-if _routers_available:
+if _projects_available:
     app.include_router(projects_router, prefix="/api/v1")
+if _tasks_available:
     app.include_router(tasks_router, prefix="/api/v1")
-# TODO: include routers here
