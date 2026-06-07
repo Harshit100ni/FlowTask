@@ -7,6 +7,7 @@ import FilterBar from './components/FilterBar';
 import KanbanBoard from './components/KanbanBoard';
 import TaskDetailPanel from './components/TaskDetailPanel';
 import NewTaskModal from './components/NewTaskModal';
+import NewProjectModal from './components/NewProjectModal';
 import './styles/global.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const [newTaskDefaultStatus, setNewTaskDefaultStatus] = useState('To Do');
+  const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);
 
   const selectedProjectId = filters.project_id;
 
@@ -90,8 +92,7 @@ function App() {
           selectedProjectId={selectedProjectId}
           onSelectProject={handleSelectProject}
           onDeleteProject={handleDeleteProject}
-          onCreated={handleCreated}
-          createProject={createProject}
+          onOpenNewProject={() => setIsNewProjectOpen(true)}
         />
       </div>
       <div className="main-content">
@@ -105,7 +106,7 @@ function App() {
           updateTask={updateTask}
           selectedProjectId={selectedProjectId}
           hasProjects={projects.length > 0}
-          onCreateProject={() => {}}
+          onCreateProject={() => setIsNewProjectOpen(true)}
           onTaskClick={handleTaskClick}
           onTaskDelete={handleTaskDelete}
           onAddTask={handleAddTask}
@@ -128,6 +129,12 @@ function App() {
         createTask={createTask}
         projectId={selectedProjectId}
         defaultStatus={newTaskDefaultStatus}
+      />
+      <NewProjectModal
+        isOpen={isNewProjectOpen}
+        onClose={() => setIsNewProjectOpen(false)}
+        onCreated={handleCreated}
+        createProject={createProject}
       />
     </>
   );

@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import ProjectList from './ProjectList';
-import NewProjectModal from './NewProjectModal';
 import '../styles/sidebar.css';
 
 export default function ProjectSidebar({
@@ -8,16 +6,13 @@ export default function ProjectSidebar({
   selectedProjectId,
   onSelectProject,
   onDeleteProject,
-  onCreated,
-  createProject,
+  onOpenNewProject,
 }) {
-  const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);
-
   return (
     <aside className="sidebar project-sidebar">
       <div className="sidebar-header">
         <h2 className="sidebar-heading">Projects</h2>
-        <button className="sidebar-new-btn" onClick={() => setIsNewProjectOpen(true)}>
+        <button className="sidebar-new-btn" onClick={onOpenNewProject}>
           New Project
         </button>
       </div>
@@ -26,12 +21,6 @@ export default function ProjectSidebar({
         selectedProjectId={selectedProjectId}
         onSelectProject={onSelectProject}
         onDeleteProject={onDeleteProject}
-      />
-      <NewProjectModal
-        isOpen={isNewProjectOpen}
-        onClose={() => setIsNewProjectOpen(false)}
-        onCreated={onCreated}
-        createProject={createProject}
       />
     </aside>
   );
