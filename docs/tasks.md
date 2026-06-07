@@ -567,7 +567,7 @@ With `hasProjects=true` the "no match" message and **Clear Filters** control are
 
 ---
 
-### Task 34: Frontend — KanbanColumn component
+### Task 34: Frontend — KanbanColumn component ✅
 
 **Files to create:**
 - `frontend/src/components/KanbanColumn.jsx`
