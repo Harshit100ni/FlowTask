@@ -57,12 +57,8 @@ function App() {
     setIsNewTaskOpen(true);
   }
 
-  function handleNewTaskCreated(task) {
+  function handleNewTaskCreated() {
     refetchTasks();
-    if (task) {
-      setSelectedTaskId(task.id);
-      setIsDetailOpen(true);
-    }
   }
 
   function handleDetailClose() {
