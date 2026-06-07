@@ -30,7 +30,7 @@ FlowTask is a minimal, single-user task manager that organises work into project
 | id          | int      | yes      | Auto-generated primary key                 |
 | project_id  | int      | yes      | Foreign key → Project; cannot be null      |
 | title       | string   | yes      | Max 100 characters                         |
-| description | string   | no       | Max 500 characters                         |
+| description | string   | no       | Max 1000 characters                        |
 | due_date    | date     | no       | Calendar date; no time component           |
 | priority    | enum     | yes      | One of: `Low`, `Medium`, `High`            |
 | status      | enum     | yes      | One of: `To Do`, `In Progress`, `Done`     |
@@ -107,7 +107,7 @@ A **Clear Filters** control resets all filters at once.
 | Field            | Rule                        | UI Behaviour                                                   |
 |------------------|-----------------------------|----------------------------------------------------------------|
 | Task title       | Required, max 100 chars     | Inline error on submit; counter shown as user types (e.g. `42/100`) |
-| Task description | Optional, max 500 chars     | Counter shown as user types; submit blocked if exceeded        |
+| Task description | Optional, max 1000 chars    | Counter shown as user types; submit blocked if exceeded        |
 | Project name     | Required                    | Inline error on submit if blank                                |
 
 ---
