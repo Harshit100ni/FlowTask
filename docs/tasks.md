@@ -688,7 +688,7 @@ Selecting a project in the sidebar filters the board to that project's tasks.
 
 ---
 
-### Task 40: Integration test — verify frontend and backend work together end to end
+### Task 40: Integration test — verify frontend and backend work together end to end ✅
 
 **Files to create/modify:** none (read-only verification)
 

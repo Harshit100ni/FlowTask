@@ -9,7 +9,7 @@ import TaskDetailPanel from './components/TaskDetailPanel';
 import './styles/global.css';
 
 function App() {
-  const { projects, deleteProject } = useProjects();
+  const { projects, createProject, deleteProject } = useProjects();
   const { filters, setFilter, clearFilters } = useFilters();
   const { tasks, createTask, updateTask, deleteTask, refetch: refetchTasks } = useTasks(filters);
 
@@ -84,6 +84,7 @@ function App() {
           onSelectProject={handleSelectProject}
           onDeleteProject={handleDeleteProject}
           onCreated={handleCreated}
+          createProject={createProject}
         />
       </div>
       <div className="main-content">

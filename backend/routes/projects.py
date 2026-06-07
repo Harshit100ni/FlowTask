@@ -44,7 +44,8 @@ async def update_project(
     if project is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Project not found")
     patch_dict = data.model_dump(exclude_unset=True)
-    project = project.model_copy(update=patch_dict)
+    for key, value in patch_dict.items():
+        setattr(project, key, value)
     session.add(project)
     await session.commit()
     await session.refresh(project)

@@ -65,7 +65,8 @@ async def update_task(
     if task is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Task not found")
     patch_dict = data.model_dump(exclude_unset=True)
-    task = task.model_copy(update=patch_dict)
+    for key, value in patch_dict.items():
+        setattr(task, key, value)
     task.updated_at = datetime.utcnow()
     session.add(task)
     await session.commit()
