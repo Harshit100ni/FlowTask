@@ -603,7 +603,7 @@ Dragging a card from "To Do" to "In Progress" calls `updateTask` with the new st
 
 ---
 
-### Task 36: Frontend — TaskForm component
+### Task 36: Frontend — TaskForm component ✅
 
 **Files to create:**
 - `frontend/src/components/TaskForm.jsx`
