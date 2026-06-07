@@ -42,7 +42,9 @@
   line-height: 1;
 }
 
-.task-card-menu-btn:hover {
+.task-card-menu-btn:hover,
+.task-card-menu-btn--active {
+  opacity: 1;
   background-color: var(--color-bg);
   color: var(--color-text);
 }

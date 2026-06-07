@@ -41,7 +41,10 @@ function TaskCard({ task, onClick, onDelete, onDragStart }) {
     >
       <div className="task-card-header">
         <span className="task-card-title">{task.title}</span>
-        <button className="task-card-menu-btn" onClick={handleMenuButtonClick}>
+        <button
+          className={`task-card-menu-btn${menuOpen ? ' task-card-menu-btn--active' : ''}`}
+          onClick={handleMenuButtonClick}
+        >
           ⋯
         </button>
       </div>

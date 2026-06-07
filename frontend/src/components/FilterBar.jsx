@@ -3,6 +3,7 @@ import ProjectFilter from './ProjectFilter';
 import PriorityFilter from './PriorityFilter';
 import StatusFilter from './StatusFilter';
 import ClearFiltersButton from './ClearFiltersButton';
+import '../styles/filterbar.css';
 
 function FilterBar({ filters, projects, onChange, onClear }) {
   const isCleared =

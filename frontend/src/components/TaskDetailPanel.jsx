@@ -13,6 +13,7 @@ function TaskDetailPanel({ taskId, projects, onClose, onUpdated, onDeleted }) {
     try {
       await updateTask(data);
       onUpdated();
+      onClose();
     } finally {
       setIsSaving(false);
     }
