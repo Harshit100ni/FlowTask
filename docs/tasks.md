@@ -552,7 +552,7 @@ The component renders the message and button; clicking the button calls `onAddTa
 
 ---
 
-### Task 33: Frontend — EmptyBoardState component
+### Task 33: Frontend — EmptyBoardState component ✅
 
 **Files to create:**
 - `frontend/src/components/EmptyBoardState.jsx`
