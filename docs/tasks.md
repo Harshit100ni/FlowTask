@@ -538,7 +538,7 @@ Clicking outside the menu closes it without deleting.
 
 ---
 
-### Task 32: Frontend — EmptyColumnState component
+### Task 32: Frontend — EmptyColumnState component ✅
 
 **Files to create:**
 - `frontend/src/components/EmptyColumnState.jsx`
