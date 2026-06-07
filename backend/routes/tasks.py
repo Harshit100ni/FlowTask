@@ -1,11 +1,35 @@
+from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlmodel import select
 
 from database import get_session
 from models import Project, Task
 from schemas import TaskCreate, TaskRead
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
+
+
+@router.get("", response_model=list[TaskRead])
+async def list_tasks(
+    project_id: Optional[int] = None,
+    status: Optional[str] = None,
+    priority: Optional[str] = None,
+    search: Optional[str] = None,
+    session: AsyncSession = Depends(get_session),
+) -> list[TaskRead]:
+    stmt = select(Task)
+    if project_id is not None:
+        stmt = stmt.where(Task.project_id == project_id)
+    if status is not None:
+        stmt = stmt.where(Task.status == status)
+    if priority is not None:
+        stmt = stmt.where(Task.priority == priority)
+    if search is not None:
+        stmt = stmt.where(Task.title.ilike(f"%{search}%"))
+    result = await session.execute(stmt)
+    return result.scalars().all()
 
 
 @router.post("", response_model=TaskRead, status_code=status.HTTP_201_CREATED)
