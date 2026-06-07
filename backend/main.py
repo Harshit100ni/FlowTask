@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -29,9 +30,12 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="FlowTask API", lifespan=lifespan)
 
+_frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+allowed_origins = [o.strip() for o in _frontend_url.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=allowed_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
