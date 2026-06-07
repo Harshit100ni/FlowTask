@@ -6,6 +6,7 @@ import ProjectSidebar from './components/ProjectSidebar';
 import FilterBar from './components/FilterBar';
 import KanbanBoard from './components/KanbanBoard';
 import TaskDetailPanel from './components/TaskDetailPanel';
+import NewTaskModal from './components/NewTaskModal';
 import './styles/global.css';
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
 
   const [selectedTaskId, setSelectedTaskId] = useState(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
+  const [newTaskDefaultStatus, setNewTaskDefaultStatus] = useState('To Do');
 
   const selectedProjectId = filters.project_id;
 
@@ -43,19 +46,17 @@ function App() {
     refetchTasks();
   }
 
-  async function handleAddTask() {
+  function handleAddTask(status) {
     if (!selectedProjectId) {
       alert('Please select a project first.');
       return;
     }
-    const title = window.prompt('Task title:');
-    if (!title || !title.trim()) return;
-    const task = await createTask({
-      project_id: selectedProjectId,
-      title: title.trim(),
-      priority: 'Low',
-      status: 'To Do',
-    });
+    setNewTaskDefaultStatus(status || 'To Do');
+    setIsNewTaskOpen(true);
+  }
+
+  function handleNewTaskCreated(task) {
+    refetchTasks();
     if (task) {
       setSelectedTaskId(task.id);
       setIsDetailOpen(true);
@@ -75,6 +76,12 @@ function App() {
     refetchTasks();
   }
 
+  function handleClearSearchFilters() {
+    setFilter('status', null);
+    setFilter('priority', null);
+    setFilter('search', '');
+  }
+
   return (
     <>
       <div className="sidebar">
@@ -90,9 +97,8 @@ function App() {
       <div className="main-content">
         <FilterBar
           filters={filters}
-          projects={projects}
           onChange={setFilter}
-          onClear={clearFilters}
+          onClear={handleClearSearchFilters}
         />
         <KanbanBoard
           tasks={tasks}
@@ -103,6 +109,7 @@ function App() {
           onTaskClick={handleTaskClick}
           onTaskDelete={handleTaskDelete}
           onAddTask={handleAddTask}
+          onClearFilters={handleClearSearchFilters}
         />
       </div>
       {isDetailOpen && (
@@ -114,6 +121,14 @@ function App() {
           onDeleted={handleDeleted}
         />
       )}
+      <NewTaskModal
+        isOpen={isNewTaskOpen}
+        onClose={() => setIsNewTaskOpen(false)}
+        onCreated={handleNewTaskCreated}
+        createTask={createTask}
+        projectId={selectedProjectId}
+        defaultStatus={newTaskDefaultStatus}
+      />
     </>
   );
 }

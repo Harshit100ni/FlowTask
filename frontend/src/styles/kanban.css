@@ -74,6 +74,29 @@
   letter-spacing: 0.05em;
 }
 
+.kanban-column-header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.kanban-column-add-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0 4px;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.kanban-column-add-btn:hover {
+  color: #6366f1;
+  background-color: #eef2ff;
+}
+
 .kanban-column-count {
   background-color: var(--color-border);
   color: var(--color-text-muted);

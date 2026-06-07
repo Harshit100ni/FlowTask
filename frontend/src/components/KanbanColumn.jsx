@@ -33,11 +33,20 @@ function KanbanColumn({ status, tasks, onTaskMove, onTaskClick, onTaskDelete, on
     >
       <div className="kanban-column-header">
         <span className="kanban-column-title">{status}</span>
-        <span className="kanban-column-count">{tasks.length}</span>
+        <div className="kanban-column-header-right">
+          <span className="kanban-column-count">{tasks.length}</span>
+          <button
+            className="kanban-column-add-btn"
+            onClick={() => onAddTask(status)}
+            title={`Add task to ${status}`}
+          >
+            +
+          </button>
+        </div>
       </div>
       <div className="kanban-column-body">
         {tasks.length === 0 ? (
-          <EmptyColumnState status={status} onAddTask={onAddTask} />
+          <EmptyColumnState status={status} onAddTask={() => onAddTask(status)} />
         ) : (
           tasks.map((task) => (
             <TaskCard

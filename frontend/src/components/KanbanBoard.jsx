@@ -12,6 +12,7 @@ function KanbanBoard({
   selectedProjectId,
   hasProjects,
   onCreateProject,
+  onClearFilters,
 }) {
   const [localTasks, setLocalTasks] = useState(tasks);
 
@@ -36,7 +37,7 @@ function KanbanBoard({
       <EmptyBoardState
         hasProjects={hasProjects}
         onCreateProject={onCreateProject}
-        onClearFilters={() => {}}
+        onClearFilters={onClearFilters}
       />
     );
   }
